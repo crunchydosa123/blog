@@ -1,11 +1,16 @@
 import React from 'react';
-import '../index.css'
+import SearchBar from './SearchBar';
+import UserIcons from './UserIcons';
 
 const Navbar = () => {
-  return (
-    <div className='bg-blue-300'>
-        <h1>Blogs by Pratham</h1>
-    </div>
+  return (  
+    <nav className='bg-gray-800 p-6'>
+      <div className='container mx-auto flex items-center justify-between'>
+        <div className='text-white font-bold text-2xl'>P-Blogs</div>
+        <SearchBar />
+        <UserIcons />
+      </div>
+    </nav>
   )
 }
 

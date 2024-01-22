@@ -6,7 +6,7 @@ const Navbar = () => {
   return (  
     <nav className='bg-gray-800 p-6'>
       <div className='container mx-auto flex items-center justify-between'>
-        <div className='text-white font-bold text-2xl'>P-Blogs</div>
+        <div className='text-white font-bold text-2xl'><a href='/'>P-Blogs</a></div>
         <SearchBar />
         <UserIcons />
       </div>

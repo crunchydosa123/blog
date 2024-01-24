@@ -1,16 +1,36 @@
 import React, { useState } from 'react';
 import { EyeIcon, EyeOffIcon } from '@heroicons/react/solid';
+import { auth } from "../firebase"
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { redirect } from "react-router-dom";
+
 
 const LoginForm = () => {
   const [passVisible, setPassVisible] = useState(false);
   const [password, setPassword ] = useState('');
+  const [email, setEmail ] = useState('');
+
+  const SignIn= (e) => {
+    e.preventDefault();
+    signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      console.log(userCredential)
+      redirect("/dashboard");
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
 
   return (
     <div className='min-h-screen flex items-center justify-center'>
-    <form className='bg-yellow-300 p-8 rounded shadow-md w-96'>
+    <form onSubmit={SignIn} className='bg-yellow-300 p-8 rounded shadow-md w-96'>
         <h2 className='text-2xl font-bold mb-4'>Login</h2>
-        <input type='text' className='mt-2 p-2 w-full border border-gray-300 rounded' placeholder='username' />
-        <input type={passVisible ?  'text' : 'password'}
+        <input type='text' 
+        className='mt-2 p-2 w-full border border-gray-300 rounded' 
+        placeholder='email'
+        value={email}
+        onChange={(e) => setEmail(e.target.value)} />
+        <input type='password'
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         className='mt-2 p-2 w-full border border-gray-300 rounded' placeholder='password' />

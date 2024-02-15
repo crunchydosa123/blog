@@ -14,7 +14,6 @@
 
     
     return (
-      <AuthContext.Provider>
       <BrowserRouter>
       <Routes>
         <Route path="/" element={ <Homepage /> } />
@@ -25,7 +24,6 @@
         <Route path="*" element={ <NotFoundpage /> } />
       </Routes>
       </BrowserRouter>
-      </AuthContext.Provider>
 
     );
   }

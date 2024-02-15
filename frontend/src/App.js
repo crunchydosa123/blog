@@ -6,9 +6,15 @@
   import NotFoundpage from './pages/NotFoundpage';
   import SingleBlog from './pages/SingleBlog';
   import Dashboard from './pages/Dashboard';
+  import { AuthContext } from './contexts/AuthContext';
+  import { useState } from 'react';
 
   function App() {
+
+
+    
     return (
+      <AuthContext.Provider>
       <BrowserRouter>
       <Routes>
         <Route path="/" element={ <Homepage /> } />
@@ -19,6 +25,7 @@
         <Route path="*" element={ <NotFoundpage /> } />
       </Routes>
       </BrowserRouter>
+      </AuthContext.Provider>
 
     );
   }

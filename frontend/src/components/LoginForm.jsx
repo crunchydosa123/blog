@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
 import { EyeIcon, EyeOffIcon } from '@heroicons/react/solid';
 import { auth } from "../firebase"
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { redirect } from "react-router-dom";
+import { getAuth, signInWithEmailAndPassword, signInWithRedirect } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 
 const LoginForm = () => {
   const [passVisible, setPassVisible] = useState(false);
   const [password, setPassword ] = useState('');
   const [email, setEmail ] = useState('');
+  const navigate = useNavigate();
 
   const SignIn= (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       console.log(userCredential)
-      redirect("/dashboard");
+      navigate("/dashboard");
     }).catch((error) => {
       console.log(error);
     });

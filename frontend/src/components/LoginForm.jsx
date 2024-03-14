@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import { EyeIcon, EyeOffIcon } from '@heroicons/react/solid';
 import { auth } from "../firebase"
-import { getAuth, signInWithEmailAndPassword, signInWithRedirect } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
 
@@ -10,6 +10,21 @@ const LoginForm = () => {
   const [password, setPassword ] = useState('');
   const [email, setEmail ] = useState('');
   const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUser(user);
+
+      } else {
+        // No user is signed in
+      }
+    });
+
+    // Cleanup function
+    return () => unsubscribe();
+  }, [navigate]);
 
   const SignIn= (e) => {
     e.preventDefault();

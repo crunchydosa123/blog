@@ -21,7 +21,7 @@ const NavSamp = () => {
       <div className='container mx-auto flex items-center justify-between'>
         <div className='text-white font-bold text-2xl'><a href='/'>P-Blogs</a></div>
         <SearchBar />
-        <button className='bg-red-500 hover:bg-blue-500 rounded-md text-white font-bold m-3 p-2' onClick={ handlelogout }>{ user ? 'Logut' : 'Login'}</button>
+        <button className='bg-red-500 hover:bg-blue-500 rounded-md text-white font-bold m-3 p-2' onClick={ handlelogout }>{ user ? 'Login' : 'Logout'}</button>
         <UserIcons />
       </div>
     </nav>

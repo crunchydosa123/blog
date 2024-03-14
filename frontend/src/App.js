@@ -6,24 +6,26 @@
   import NotFoundpage from './pages/NotFoundpage';
   import SingleBlog from './pages/SingleBlog';
   import Dashboard from './pages/Dashboard';
-  import { AuthContext } from './contexts/AuthContext';
-  import { useState } from 'react';
-
+  import { UserProvider } from './contexts/AuthContext';
   function App() {
 
 
     
     return (
+      <UserProvider>
       <BrowserRouter>
       <Routes>
-        <Route path="/" element={ <Homepage /> } />
-        <Route path="/login" element={ <Loginpage /> } />
-        <Route path="/signup" element={ <Signuppage /> } />
-        <Route path="/single" element={ <SingleBlog /> } />
-        <Route path="/dashboard" element={ <Dashboard /> } />
-        <Route path="*" element={ <NotFoundpage /> } />
+        
+          <Route path="/" element={ <Homepage /> } />
+          <Route path="/login" element={ <Loginpage /> } />
+          <Route path="/signup" element={ <Signuppage /> } />
+          <Route path="/single" element={ <SingleBlog /> } />
+          <Route path="/dashboard" element={ <Dashboard /> } />
+          <Route path="*" element={ <NotFoundpage /> } />
+        
       </Routes>
       </BrowserRouter>
+      </UserProvider>
 
     );
   }

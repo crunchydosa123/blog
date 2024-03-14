@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Navbar from '../components/Navbar'
+import { UserContext } from '../contexts/AuthContext';
 
 const Dashboard = () => {
+  const user = useContext(UserContext)
   return (
     <div>
         <Navbar />
@@ -13,7 +15,7 @@ const Dashboard = () => {
         </div>
         <div className='flex-1'>
             <div className='grid grid-cols-12 gap-4'>
-                <div className='hello-user text-3xl text-left p-5 font-bold col-span-12 bg-gray-300'>Welcome, Pratham!</div>
+                <div className='hello-user text-3xl text-left p-5 font-bold col-span-12 bg-gray-300'>Welcome, {user ? user.email : 'Guest'}</div>
                 <div className='hello-user text-3xl text-left font-bold col-span-8 h-80 ml-5 rounded bg-gray-300'></div>
                 <div className='hello-user text-3xl text-left font-bold col-span-4 h-80 mr-5 rounded bg-gray-300'></div>
         </div>

@@ -28,7 +28,7 @@ const BlogList = () => {
     <div className='grid grid-cols-12 gap-4'>
     {blogs.map(blog => (
       <div key={blog.id} className='col-span-3'> {/* Adjust col-span as needed */}
-        <BlogCard title={blog.title} content={blog.content} />
+        <BlogCard title={blog.title} content={blog.content} id={blog.id} />
       </div>
     ))}
   </div>

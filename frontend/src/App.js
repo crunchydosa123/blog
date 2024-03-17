@@ -21,6 +21,7 @@
           <Route path="/signup" element={ <Signuppage /> } />
           <Route path="/single" element={ <SingleBlog /> } />
           <Route path="/dashboard" element={ <Dashboard /> } />
+          <Route path="/blogs/:id" element={ <SingleBlog />} />
           <Route path="*" element={ <NotFoundpage /> } />
         
       </Routes>

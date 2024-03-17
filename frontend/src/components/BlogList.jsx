@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import { getApp } from 'firebase/app';
+import { BlogCard } from './BlogCard';
 const db = getFirestore();
 
 const BlogList = () => {
@@ -19,21 +20,18 @@ const BlogList = () => {
                 console.error('Error fetching blogs: ', error);
             }
         };
-
+        
         fetchBlogs();
-    }, [])
+    }, [blogs])
 
   return (
-    <div>
-    <div>BlogList</div>
-    {blogs.map(blog =>(
-        <div key={blog.id}>
-            <h3>{blog.title}</h3>
-            <p>{blog.content}</p>
-            <p>{blog.author}</p>
-        </div>
+    <div className='grid grid-cols-12 gap-4'>
+    {blogs.map(blog => (
+      <div key={blog.id} className='col-span-3'> {/* Adjust col-span as needed */}
+        <BlogCard title={blog.title} content={blog.content} />
+      </div>
     ))}
-    </div>
+  </div>
   )
 }
 

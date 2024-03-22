@@ -2,33 +2,29 @@ import React, { useEffect, useState } from 'react';
 import backgroundImage from './pexels-suket-dedhia-570026.jpg';
 import Navbar from '../components/Navbar';
 import { useParams } from 'react-router-dom';
-import { collection, getFirestore, query, where, getDocs } from "firebase/firestore";
-const db = getFirestore();
-const blogRef = collection(db, "blogs");
-
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 
 const SingleBlog = () => {
+  const db = getFirestore();
   const { id } = useParams();
   const [blog, setBlog] = useState();
 
   useEffect(() =>{
     const fetchBlog = async() =>{
       try{
-        const q = query(blogRef, where("id", "==", id));
-        const querySnapshot = await getDocs(q);
-        if (!querySnapshot.empty) {
-          const doc = querySnapshot.docs[0];
-          setBlog(doc.data());
+        const blogRef = doc(db, "blogs", id);
+        const blogDoc = await getDoc(blogRef);
+        if (blogDoc.exists()) {
+          setBlog(blogDoc.data());
         } else {
-          console.log("No document found with the provided ID.");
-          console.log(id);
+          console.log("No such document!");
         }
       }catch(error){
         console.error('Error fetching blog: ', error);
       }
     };
     fetchBlog();
-  }, [id])
+  }, [db, id]);
   
   return (
     <div>

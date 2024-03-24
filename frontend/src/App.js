@@ -7,6 +7,7 @@
   import SingleBlog from './pages/SingleBlog';
   import Dashboard from './pages/Dashboard';
   import { UserProvider } from './contexts/AuthContext';
+import WriteBlog from './pages/WriteBlog';
   function App() {
 
 
@@ -21,6 +22,7 @@
           <Route path="/signup" element={ <Signuppage /> } />
           <Route path="/blogs/:id?" element={<SingleBlog />} />
           <Route path="/dashboard" element={ <Dashboard /> } />
+          <Route path="/write" element={ <WriteBlog /> } />
           <Route path="*" element={ <NotFoundpage /> } />
         
       </Routes>

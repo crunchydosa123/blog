@@ -16,7 +16,6 @@ import WriteBlog from './pages/WriteBlog';
       <UserProvider>
       <BrowserRouter>
       <Routes>
-        
           <Route path="/" element={ <Homepage /> } />
           <Route path="/login" element={ <Loginpage /> } />
           <Route path="/signup" element={ <Signuppage /> } />
@@ -24,7 +23,6 @@ import WriteBlog from './pages/WriteBlog';
           <Route path="/dashboard" element={ <Dashboard /> } />
           <Route path="/write" element={ <WriteBlog /> } />
           <Route path="*" element={ <NotFoundpage /> } />
-        
       </Routes>
       </BrowserRouter>
       </UserProvider>

@@ -9,8 +9,9 @@ export const BlogCard = (props) => {
     e.preventDefault();
     navigate(`/blogs/${props.id}`);
   }
-    const { title, content, id } = props;
+    const { title, id, content } = props;
   return (
+    
     <div className='col-span-3 m-3 bg-white border border-blue-400 rounded-md '>
         <img src={imageSample} alt='Sample Image' className='w-full h-auto' />
         <div className='title font-bold text-xl justify-center mt-2 ml-5 mr-5'>{title}</div>
